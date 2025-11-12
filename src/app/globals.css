@@ -52,14 +52,14 @@
 
   --color-secondary-button-background: var(--secondary-button-background);
   --color-secondary-button-foreground: var(--secondary-button-foreground);
-  
+
   --color-accent-primary: var(--accent-primary);
   --color-accent-secondary: var(--accent-secondary);
   --color-accent-tertiary: var(--accent-tertiary);
 
   --color-input-background: var(--input-background);
   --color-input-foreground: var(--input-foreground);
-  
+
   --color-highlight: var(--highlight);
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -70,7 +70,7 @@
 
 :root {
   --radius: 0.625rem;
-  
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
