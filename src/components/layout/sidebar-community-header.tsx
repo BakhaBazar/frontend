@@ -75,12 +75,14 @@ function DropdownContent() {
       <DropdownMenuSeparator className="bg-gray-700" />
 
       {/* Option 1: AI Prompting */}
-      <DropdownMenuItem className="cursor-pointer flex flex-col items-start gap-1 px-3 py-2 rounded-md hover:bg-gray-700/50 transition-colors">
+      <DropdownMenuItem className="cursor-pointer flex flex-col items-start gap-1 px-3 py-2 rounded-md hover:bg-gray-700/50 transition-colors"
+        onClick={() => router.push("/ai")}
+      >
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-white" />
           <span className="font-medium text-white">AI Prompting</span>
         </div>
-        <span className="text-xs text-gray-400 leading-snug break-words">
+        <span className="text-xs text-gray-400 leading-snug wrap-break-word">
           Let AI help you generate ideas, drafts, or inspiration.
         </span>
       </DropdownMenuItem>
