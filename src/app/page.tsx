@@ -1,4 +1,4 @@
-export default function Home() {
+export default function LandingPage() {
   return (
     <div className="h-screen w-full bg-primary-background text-secondary-text flex flex-col justify-center items-center">
 
