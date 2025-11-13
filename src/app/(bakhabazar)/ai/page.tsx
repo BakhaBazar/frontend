@@ -19,7 +19,6 @@ export default function ArtificialIntelligencePage() {
   const firstName = userName.match(/^[^\s]+/)?.[0] || "Guest";
   const csrfToken = Cookies.get("csrftoken");
 
-
   const handleSubmit = async () => {
     if (!input.trim()) return;
     setLoading(true);
@@ -45,7 +44,11 @@ export default function ArtificialIntelligencePage() {
       if (!res.ok) throw new Error("Network response was not ok");
       const data = await res.json();
 
-      setResponse(data?.result || "No response from AI.");
+      if (data?.title && data?.content) {
+        setResponse(`${data.title} successfully created \n\n ${data.content}`);
+      } else {
+        setResponse("No response from AI.");
+      }
     } catch (error) {
       console.error(error);
       setResponse("An error occurred while fetching data.");
@@ -102,7 +105,7 @@ export default function ArtificialIntelligencePage() {
           </div>
 
           {response && (
-            <div className="mt-6 p-4 bg-secondary-background border border-highlight rounded-xl text-left text-secondary-text shadow-md">
+            <div className="mt-6 p-4 bg-secondary-background border border-highlight rounded-xl text-left text-secondary-text shadow-md max-h-60 overflow-y-auto">
               <p className="text-sm leading-relaxed whitespace-pre-line">{response}</p>
             </div>
           )}
