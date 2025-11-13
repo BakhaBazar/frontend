@@ -1,10 +1,9 @@
-"use client"
 import { podcast } from "@/types/models/podcast";
 import HomeMain from "@/components/home/home-main";
 import SpotlightSlider from "@/components/home/image-slider";
 import Footer from "@/components/layout/footer";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_CLIENT_URL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND;
 
 export default async function Home() {
   let rows: podcast[] = [];
@@ -15,7 +14,7 @@ export default async function Home() {
     });
     rows = await res.json();
   } catch (error) {
-    console.log("Backend is sdnot working: " + error);
+    console.log("Backend is not working: " + error);
   }
 
   return (
