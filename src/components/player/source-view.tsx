@@ -15,17 +15,17 @@ export default function SourceViewer() {
   ];
 
   return (
-    <div className="flex flex-wrap gap-3 justify-center p-4 bg-transparent">
+    <div className="flex flex-wrap gap-2 justify-start p-4 bg-transparent">
       {sources.map((src, i) => (
         <div
           key={i}
-          className="rounded-full bg-primary-background text-xs/tight border border-highlight shadow-md px-4 py-3 w-fit hover:bg-secondary-background transition-all duration-200"
+          className="rounded-full bg-primary-background text-[10px] border border-highlight shadow-sm px-3 py-1.5 hover:bg-secondary-background transition-all duration-200"
         >
           <a
             href={src.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline text-sm underline-offset-2 hover:text-blue-300 transition-colors"
+            className="text-white underline underline-offset-2 hover:text-blue-300 transition-colors"
           >
             {src.name}
           </a>

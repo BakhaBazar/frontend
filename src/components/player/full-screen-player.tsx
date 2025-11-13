@@ -42,8 +42,8 @@ export default function FullScreenPlayer() {
 
       {/* Right */}
       <div className="flex-1 text-secondary-text p-10 overflow-hidden flex flex-col justify-center">
+        {/* <SourceViewr /> */}
 
-        <SourceViewr />
         
         <SubtitleViewer
           subtitles={subtitles}

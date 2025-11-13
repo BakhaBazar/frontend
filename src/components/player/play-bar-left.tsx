@@ -15,7 +15,9 @@ export default function PlayBarLeft() {
     <div className="flex items-center gap-3 min-w-0 w-full md:w-auto">
       <ScrollImage
         src={
-          activePodcast?.picture ? API_BASE_URL + activePodcast.picture : ""
+          activePodcast?.picture
+            ? API_BASE_URL + activePodcast.picture
+            : "/icons/thrilling.png"
         }
       />
       <div className="flex flex-col min-w-0 overflow-hidden">
