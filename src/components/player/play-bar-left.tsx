@@ -30,7 +30,7 @@ export default function PlayBarLeft() {
         />
         <MarqueeText
           text={activePodcast?.author || ""}
-          className="text-xs text-secondary-text w-full md:max-w-[160px]"
+          className="text-xs text-secondary-text w-full md:max-w-40"
           maxWidth="160px"
         />
       </div>

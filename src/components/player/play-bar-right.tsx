@@ -16,11 +16,11 @@ import { usePodcast } from "@/context/use-podcast";
 const API_BASE_URL = process.env.NEXT_PUBLIC_CLIENT_URL
 
 export default function PlayBarRight() {
-    const [liked, setLiked] = useState(false);
+    const { activePodcast, isFullScreen, setIsFullScreen } = usePodcast();
+    const [liked, setLiked] = useState(activePodcast?.user_like);
     const [loading, setLoading] = useState(false);
     const csrfToken = Cookies.get("csrftoken");
 
-    const { activePodcast, isFullScreen, setIsFullScreen } = usePodcast();
 
     const handleLike = async () => {
         // Prevent spamming
@@ -28,7 +28,9 @@ export default function PlayBarRight() {
         if (loading || !activePodcast) return;
 
         setLoading(true);
+
         try {
+            console.log(activePodcast.title, activePodcast.uuid, activePodcast.user_like)
             const response = await fetch(`${API_BASE_URL}/api/save/like/`, {
                 method: "POST",
                 headers: {
@@ -48,6 +50,7 @@ export default function PlayBarRight() {
 
             // Toggle state only if the request succeeds
             setLiked(!liked);
+            
         } catch (error) {
             console.error("Error liking podcast:", error);
         } finally {

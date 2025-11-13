@@ -31,20 +31,19 @@ export default function FullScreenPlayer() {
   if (!isFullScreen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-secondary-background flex p-30">
+    <div className="fixed inset-0 z-50 bg-secondary-background flex p-30 flex-col lg:flex-row">
       {/* Left */}
-      <div className="flex-1 flex flex-col items-center justify-center gap-8">
+      <div className="flex-1 flex flex-col items-center justify-start pb-10">
         <PodcastArt picture={activePodcast?.picture} title={activePodcast?.title} />
-        <div className="text-center text-secondary-text max-w-[80%]">
-          <h1 className="text-2xl font-bold mb-3">{activePodcast?.title}</h1>
+        <div className="text-center text-secondary-text max-w-[80%] mt-2">
+          <h1 className="text-2xl font-bold mb-1">{activePodcast?.title}</h1>
         </div>
       </div>
+
 
       {/* Right */}
       <div className="flex-1 text-secondary-text p-10 overflow-hidden flex flex-col justify-center">
         {/* <SourceViewr /> */}
-
-        
         <SubtitleViewer
           subtitles={subtitles}
           activeSubtitleId={activeSubtitleId}
@@ -54,7 +53,7 @@ export default function FullScreenPlayer() {
       </div>
 
       {/* Bottom Controls */}
-      <div className="absolute bottom-0 left-0 right-0">
+      <div className="absolute bottom-0 left-0 right-0 hidden lg:block">
         <PlayBar />
       </div>
 

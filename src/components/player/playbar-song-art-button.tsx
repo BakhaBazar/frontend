@@ -29,7 +29,7 @@ const ScrollImage: React.FC<ScrollImageProps> = ({
   const initials = getInitials(title || name || "Podcast");
 
   return (
-    <button onClick={handleScroll} className="flex-shrink-0">
+    <button onClick={handleScroll} className="shrink-0">
       {src ? (
         <Image
           src={src}
@@ -41,7 +41,7 @@ const ScrollImage: React.FC<ScrollImageProps> = ({
         />
       ) : (
         <div
-          className="flex items-center justify-center rounded-md bg-gradient-to-br 
+          className="flex items-center justify-center rounded-md bg-linear-to-br 
                      from-accent-primary via-color-tertiary to-accent-secondary 
                      text-white text-2xl font-bold shadow-md border border-white/20"
           style={{ width: size, height: size }}
