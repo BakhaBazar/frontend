@@ -17,7 +17,7 @@ interface PodcastCardProps {
 }
 
 export default function PodcastCard({ podcast, type }: PodcastCardProps) {
-  const { setActivePodcast } = usePodcast();
+  const { setActivePodcast, setIsPlaying } = usePodcast();
 
   const handlePlayClick = async () => {
     try {
@@ -35,7 +35,7 @@ export default function PodcastCard({ podcast, type }: PodcastCardProps) {
 
   return (
     <div
-      className="flex-shrink-0 w-46 cursor-pointer p-3 rounded-md hover:bg-highlight transition group"
+      className="shrink-0 w-46 cursor-pointer p-3 rounded-md hover:bg-highlight transition group"
       onClick={handlePlayClick}
     >
       {/* Image container */}
@@ -48,10 +48,11 @@ export default function PodcastCard({ podcast, type }: PodcastCardProps) {
             height={500}
             className="w-full h-full object-cover rounded-md"
             unoptimized
+            
           />
         ) : (
           <Image
-            src={"/icons/thrilling.png"}
+            src={"/icons/ai.png"}
             alt={capitalizeTitle(podcast?.title || "Podcast")}
             width={500}
             height={500}
@@ -63,6 +64,7 @@ export default function PodcastCard({ podcast, type }: PodcastCardProps) {
         {/* Play Button */}
         <button
           className="cursor-pointer absolute bottom-2 right-2 w-10 h-10 rounded-full bg-secondary flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+          onClick={() => {setIsPlaying(true)}}
         >
           <Play className="text-black fill-black" size={20} />
         </button>

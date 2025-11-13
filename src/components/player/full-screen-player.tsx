@@ -1,17 +1,27 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { usePodcast } from "@/context/use-podcast";
-import { useSubtitles } from "@/hooks/use-subtitle";
 import { useActiveSubtitle } from "@/hooks/use-active-subtitle";
 import SubtitleViewer from "./subtitle-view";
 import PodcastArt from "./podcast-art";
 import PlayBar from "./play-bar";
-import SourceViewr from "./source-view";
+import { Subtitle } from "@/types/subtitle"; // ✅ make sure this import path matches your structure
 
 export default function FullScreenPlayer() {
   const { isFullScreen, setIsFullScreen, activePodcast, audioRef } = usePodcast();
-  const { subtitles } = useSubtitles("/subtitle.txt");
   const [currentTime, setCurrentTime] = useState(0);
+
+  const subtitles: Subtitle[] = useMemo(() => {
+    if (!activePodcast?.srt) return [];
+
+    // Transform array-of-arrays into consistent Subtitle objects
+    return activePodcast.srt.map((entry: any, index: number): Subtitle => {
+      const startTime = entry.find((x: any) => x[0] === "start")?.[1] || 0;
+      const endTime = entry.find((x: any) => x[0] === "end")?.[1] || 0;
+      const text = entry.find((x: any) => x[0] === "word")?.[1] || "";
+      return { id: index, startTime, endTime, text };
+    });
+  }, [activePodcast?.srt]);
 
   const activeSubtitleId = useActiveSubtitle(subtitles, currentTime);
 
@@ -40,10 +50,8 @@ export default function FullScreenPlayer() {
         </div>
       </div>
 
-
       {/* Right */}
       <div className="flex-1 text-secondary-text p-10 overflow-hidden flex flex-col justify-center">
-        {/* <SourceViewr /> */}
         <SubtitleViewer
           subtitles={subtitles}
           activeSubtitleId={activeSubtitleId}
@@ -57,7 +65,7 @@ export default function FullScreenPlayer() {
         <PlayBar />
       </div>
 
-      {/* Close */}
+      {/* Close Button */}
       <button
         className="absolute top-4 right-4 text-white text-xl hover:opacity-80 transition-opacity"
         onClick={() => setIsFullScreen(false)}

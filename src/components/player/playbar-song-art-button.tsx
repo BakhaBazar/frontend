@@ -37,7 +37,7 @@ const ScrollImage: React.FC<ScrollImageProps> = ({
           width={size}
           height={size}
           className="rounded-md object-cover cursor-pointer"
-          unoptimized
+          
         />
       ) : (
         <div

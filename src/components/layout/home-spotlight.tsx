@@ -31,7 +31,7 @@ export default function StorySpotlight() {
             src={
               activePodcast?.picture
                 ? API_BASE_URL + activePodcast.picture
-                : "/icons/thrilling.png"
+                : "/icons/ai.png"
             }
             alt={activePodcast?.title || activePodcast?.name || "Story"}
             fill
@@ -39,8 +39,8 @@ export default function StorySpotlight() {
             sizes="(max-width: 640px) 100vw, 
          (max-width: 1024px) 80vw, 
          60vw"
-            priority
             unoptimized
+            
           />
 
         </div>

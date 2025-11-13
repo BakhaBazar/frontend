@@ -1,3 +1,4 @@
+import { Subtitle } from "../subtitle";
 
 export type PodcastType = "story" | "legend" | "entity";
 
@@ -18,4 +19,5 @@ export interface podcast {
   type: PodcastType;
   audio?: string;
   user_like: boolean;
+  srt: Subtitle[];
 }

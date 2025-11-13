@@ -57,7 +57,7 @@ export default function TopComments() {
                         className="w-full h-auto rounded-xl object-contain"
                         priority
                         alt="home lakhe"
-                        unoptimized
+                        
                     />
                 </div>
 

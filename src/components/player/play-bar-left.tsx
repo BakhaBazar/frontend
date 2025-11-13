@@ -17,7 +17,7 @@ export default function PlayBarLeft() {
         src={
           activePodcast?.picture
             ? API_BASE_URL + activePodcast.picture
-            : "/icons/thrilling.png"
+            : "/icons/ai.png"
         }
       />
       <div className="flex flex-col min-w-0 overflow-hidden">

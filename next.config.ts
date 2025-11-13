@@ -13,7 +13,6 @@ const nextConfig: NextConfig = {
       {
         protocol: "http",
         hostname: "192.168.1.136",
-        pathname: "/media/**", // important to allow your media directory
       },
       {
         protocol: "http",

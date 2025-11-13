@@ -25,7 +25,7 @@ export default function PodcastArt({ picture, title }: PodcastArtProps) {
       "
     >
       <img
-        src={picture || "/icons/thrilling.png"}
+        src={picture || "/icons/ai.png"}
         alt={title}
         className="
           w-full 

@@ -25,7 +25,7 @@ export function RankCard({ rank, title, imageUrl }: RankCardProps) {
           width={500}   // adjust as needed
           height={500}  // adjust as needed
           className="w-full h-full object-cover"
-          unoptimized
+          
         />
       </div>
     </div>
