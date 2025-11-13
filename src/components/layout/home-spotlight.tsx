@@ -9,7 +9,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_CLIENT_URL
 
 export default function StorySpotlight() {
   const { activePodcast } = usePodcast();
-  
+
   return (
     <div
       className="
@@ -26,23 +26,26 @@ export default function StorySpotlight() {
     >
       {/* Story Section */}
       <div>
-        {activePodcast?.picture && (
-          <div className="relative w-full h-56 sm:h-72 lg:h-80 xl:h-96">
-            <Image
-              src={API_BASE_URL + activePodcast?.picture}
-              alt={activePodcast?.title || activePodcast?.name ||  "Story"}
-              fill
-              className="rounded-lg object-cover"
-              sizes="(max-width: 640px) 100vw, 
-                     (max-width: 1024px) 80vw, 
-                     60vw"
-              priority
-              unoptimized
-            />
-          </div>
-        )}
+        <div className="relative w-full h-56 sm:h-72 lg:h-80 xl:h-96">
+          <Image
+            src={
+              activePodcast?.picture
+                ? API_BASE_URL + activePodcast.picture
+                : "/icons/thrilling.png"
+            }
+            alt={activePodcast?.title || activePodcast?.name || "Story"}
+            fill
+            className="rounded-lg object-cover"
+            sizes="(max-width: 640px) 100vw, 
+         (max-width: 1024px) 80vw, 
+         60vw"
+            priority
+            unoptimized
+          />
+
+        </div>
         <h2 className="text-2xl font-bold mt-4 text-secondary">
-          {capitalizeTitle(activePodcast?.title || activePodcast?.name  || "")}
+          {capitalizeTitle(activePodcast?.title || activePodcast?.name || "")}
         </h2>
         <p className="text-primary-button-foreground text-base leading-relaxed mt-2">
           {activePodcast?.synopsis}

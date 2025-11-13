@@ -32,7 +32,6 @@ export default function PodcastCard({ podcast, type }: PodcastCardProps) {
     }
   };
 
-  const initials = getInitials(podcast.title || podcast.name || "Podcast");
 
   return (
     <div
@@ -51,9 +50,14 @@ export default function PodcastCard({ podcast, type }: PodcastCardProps) {
             unoptimized
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center rounded-full bg-gradient-to-br from-accent-primary via-color-tertiary to-accent-secondary text-white text-4xl font-bold shadow-md border border-white/20">
-            {initials}
-          </div>
+          <Image
+            src={"/icons/thrilling.png"}
+            alt={capitalizeTitle(podcast?.title || "Podcast")}
+            width={500}
+            height={500}
+            className="w-full h-full object-cover rounded-md"
+            unoptimized
+          />
         )}
 
         {/* Play Button */}

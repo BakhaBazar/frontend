@@ -6,6 +6,7 @@ import {
     AlignJustify,
     Volume2,
     Maximize,
+    Minimize,
 } from "lucide-react";
 import { VolumeSlider } from "./volume-slider";
 import Cookies from "js-cookie";
@@ -19,8 +20,8 @@ export default function PlayBarRight() {
     const [loading, setLoading] = useState(false);
     const csrfToken = Cookies.get("csrftoken");
 
-    const { activePodcast } = usePodcast();
-    
+    const { activePodcast, isFullScreen, setIsFullScreen } = usePodcast();
+
     const handleLike = async () => {
         // Prevent spamming
         if (loading) return;
@@ -69,7 +70,17 @@ export default function PlayBarRight() {
             <div className="hidden md:block">
                 <VolumeSlider />
             </div>
-            <Maximize className="h-5 w-5 text-primary-button-foreground cursor-pointer hover:text-primary-button-foreground" />
+            {isFullScreen ? (
+                <Minimize
+                    onClick={() => setIsFullScreen(false)}
+                    className="h-5 w-5 cursor-pointer hover:text-highlight"
+                />
+            ) : (
+                <Maximize
+                    onClick={() => setIsFullScreen(true)}
+                    className="h-5 w-5 cursor-pointer hover:text-highlight"
+                />
+            )}
         </div>
     );
 }

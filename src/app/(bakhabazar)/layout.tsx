@@ -16,6 +16,8 @@ import { PodcastProvider } from "@/context/use-podcast";
 import HomeNav from "@/components/layout/home-nav";
 import StorySpotlight from "@/components/layout/home-spotlight";
 import PlayBar from "@/components/player/play-bar";
+import FullScreenPlayer from "@/components/player/full-screen-player"
+import GlobalAudio from "@/components/player/global-audio"
 
 // Bebas Neue (good for big titles)
 const bebasNeue = Bebas_Neue({
@@ -81,6 +83,9 @@ export default async function RootLayout({
                         <AppSidebar className=" py-5" />
 
                         <PodcastProvider initialPodcast={{ type: "story", ...firstPodcast}}>
+                            
+                            <GlobalAudio /> 
+                            
                             {/* Main content - Wrap with both providers */}
                             <SidebarInset className="flex flex-col">
 
@@ -105,6 +110,9 @@ export default async function RootLayout({
 
                                 {/* Fixed PlayBar at bottom */}
                                 <PlayBar />
+
+                                <FullScreenPlayer />
+
                             </SidebarInset>
 
                         </PodcastProvider>
